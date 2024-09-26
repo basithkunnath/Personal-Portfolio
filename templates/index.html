@@ -1,0 +1,223 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- AOS CSS (Animate On Scroll) -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+</head>
+</body> 
+
+    <!-- Gradient overlay to make text readable over background -->
+    <section class="home">
+        <header>
+            <nav class="navbar">
+               
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#projects">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </header>
+    <div class="container-fluid">
+        <div class="row w-100">
+            <div class="col-md-5 d-flex align-items-center justify-content-md-start justify-content-center content">
+                <div>
+                    <h3>Hello,</h3>
+                    <h1 data-aos="fade-right">I am Basith Kunnath</h1>
+                    <h3 data-aos="fade-left" >Web Developer</h3>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    <a href="#" class="contact-btn">
+                         Contact Me
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-center image-container">
+                <img src="{% static '/images/bg.png' %}" alt="Profile Image" class="img-fluid bg-image"data-aos="fade-up" >
+            </div>
+        </div>
+    </div>
+
+     <!-- WhatsApp Chat Icon -->
+     <a href="https://wa.me/919947055743" class="whatsapp-icon" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    </section>
+
+    <section class="about-section py-6">
+        <div class="about-container">
+          <div class="row align-items-center">
+            <!-- Image Section -->
+            <div class="col-lg-4 text-center" data-aos="fade-right">
+              <img src="{{ about_info.image.url }}" alt="About Image" class="img-fluid rounded-circle about-img">
+            </div>
+            <!-- Text Section -->
+            <div class="col-lg-8">
+              <h1 class="about-heading mb-3" data-aos="fade-down">{{ about_info.heading }}</h1>
+              <p class="about-text" data-aos="fade-left">
+                {{ about_info.description }}
+              </p>
+              <!-- Contact Button -->
+              <button class="btn btn-outline-light contact-btn mt-3" data-aos="fade-up">Contact Me</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Services Section -->
+<section class="services-section">
+    <div class="container">
+        <h2 class="mb-5" data-aos="fade-down">{{ services_info.heading }}</h2>
+        <div class="row g-4">
+            <!-- Web Development (Larger) -->
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="service-card p-4 text-center web-dev-large">
+                    <div class="web-service-icon mb-3">
+                        <img src="{{ services_info.service1_icon.url }}" alt="Service 1 Icon">
+                    </div>
+                    <div class="service-title">{{ services_info.service1_title }}</div>
+                </div>
+            </div>
+            <!-- Column for Branding and Basic SEO -->
+            <div class="col-lg-6">
+                <div class="row g-4">
+                    <!-- Branding -->
+                    <div class="col-12" data-aos="fade-left">
+                        <div class="service-card p-4 text-center flex-display">
+                            <div class="brandandseo-service-icon mb-3">
+                                <img src="{{ services_info.service2_icon.url }}" alt="Branding Icon">
+                            </div>
+                            <div class="brandandseo-service-title">{{ services_info.service2_title }}</div>
+                        </div>
+                    </div>
+                    <!-- Basic SEO (Below Branding) -->
+                    <div class="col-12" data-aos="fade-left">
+                        <div class="service-card p-4 text-center flex-display">
+                            <div class="brandandseo-service-icon mb-3">
+                                <img src="{{ services_info.service3_icon.url }}" alt="SEO Icon">
+                            </div>
+                            <div class="brandandseo-service-title">{{ services_info.service3_title }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="projects">
+    <div class="container">
+        <!-- Projects section -->
+        <h1 class="projects-heading" data-aos="fade-down">What I've Built</h1>
+
+        
+
+        <!-- Carousel for the projects -->
+        <div id="projectsCarousel" class="carousel slide carousel-container" data-bs-ride="carousel">
+            <div class="carousel-inner" data-aos="fade-up">
+                {% for project in projects_info %}
+                <div class="carousel-item active">
+                    <img src="{{ project.project_image.url }}" class="d-block w-100" alt="Project Image">
+                </div>
+                {% endfor %}
+            </div>
+        
+            <!-- Left and right controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#projectsCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#projectsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        
+    </div>
+   </section>
+
+
+   <section class="contact" id="contact" >
+    
+
+
+   <div class="contact-container">
+    <h1 class="text-center contact-heading" data-aos="fade-down">{{ contact_info.heading }}</h1>
+    
+    <form  action="" name="contactForm" method="POST" onsubmit="return validateForm()" data-aos="fade-up">
+        {% csrf_token %}
+        <div class="mb-3">
+            
+            <input type="text" class="form-control" id="name" placeholder="Your Name" name="name">
+        </div>
+        <div class="mb-3">
+            
+            <input type="tel" class="form-control" id="phone" placeholder="Your Phone" name="phone">
+        </div>
+        <div class="mb-3">
+            
+            <textarea class="form-control" id="message" rows="8" placeholder="Your Message" name="message"></textarea>
+        </div>
+        <div class="d-grid">
+            <button  class="btn btn-custom">Send Message</button>
+        </div>
+    </form>
+</div>
+
+</section>
+
+
+
+   <!-- Footer -->
+   <footer class="text-center text-white mt-auto">
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-12">
+                <p class="mb-0">Copyright © 2024 by Basith | All Rights Reserved.</p>
+            </div>
+        </div>
+        <a href="#top" id="back-to-top" class="btn btn-white btn-circle">
+            <a href="#"><i class='bx bx-up-arrow-alt'></i></a>
+        </a>
+    </div>
+</footer>
+
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS (Animate on Scroll) -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+     <!-- Bootstrap JS For Carousel -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+     <!-- Custom Js -->
+    <script src="{% static '/script/script.js' %}"></script>
+</body>
+</html>
