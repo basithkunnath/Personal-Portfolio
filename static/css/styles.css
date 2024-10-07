@@ -271,7 +271,7 @@ section {
 @media (max-width: 768px) {
 
     .home {
-        height: 100vh;
+        height: auto;
         background: #216648;
     }
 
